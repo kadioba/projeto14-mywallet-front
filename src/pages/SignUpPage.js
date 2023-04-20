@@ -2,24 +2,48 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import MyWalletLogo from "../components/MyWalletLogo"
 import { useState } from "react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function SignUpPage() {
-  const [nome, setNome] = useState("")
-  const [email, setEmail] = useState("")
-  const [senha, setSenha] = useState("")
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("")
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" })
+  console.log(formData)
 
-  console.log(nome + email + senha + confirmacaoSenha)
+  const navigate = useNavigate()
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    if (formData.password !== confirmacaoSenha) {
+      alert("As senhas devem ser iguais")
+      return
+    }
+
+    const promisse = axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, formData)
+
+    promisse.then(() => {
+      navigate("/")
+    })
+    promisse.catch((error) => {
+      console.log(error)
+    })
+
+  }
 
   return (
     <SingUpContainer>
-      <form>
+      <form onSubmit={handleSubmit}>
         <MyWalletLogo />
-        <input placeholder="Nome" type="text" value={nome} onChange={e => setNome(e.target.value)} />
-        <input placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input placeholder="Senha" type="password" autocomplete="new-password" value={senha} onChange={e => setSenha(e.target.value)} />
+        <input placeholder="Nome" type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input placeholder="E-mail" type="email" name="email" value={formData.email} onChange={handleChange} />
+        <input placeholder="Senha" type="password" autocomplete="new-password" name="password" value={formData.password} onChange={handleChange} />
         <input placeholder="Confirme a senha" type="password" autocomplete="new-password" value={confirmacaoSenha} onChange={e => setConfirmacaoSenha(e.target.value)} />
-        <button>Cadastrar</button>
+        <button type="submit">Cadastrar</button>
       </form>
 
       <Link>

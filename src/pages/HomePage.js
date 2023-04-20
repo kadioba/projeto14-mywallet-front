@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
+import Transactions from "../components/Transactions"
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
         <BiExit />
       </Header>
 
-      <TransactionsContainer>
+      {/*       <TransactionsContainer>
         <ul>
           <ListItemContainer>
             <div>
@@ -33,7 +34,8 @@ export default function HomePage() {
           <strong>Saldo</strong>
           <Value color={"positivo"}>2880,00</Value>
         </article>
-      </TransactionsContainer>
+      </TransactionsContainer> */}
+      <Transactions />
 
 
       <ButtonsContainer>
@@ -65,24 +67,6 @@ const Header = styled.header`
   font-size: 26px;
   color: white;
 `
-const TransactionsContainer = styled.article`
-  flex-grow: 1;
-  background-color: #fff;
-  color: #000;
-  border-radius: 5px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  article {
-    display: flex;
-    justify-content: space-between;   
-    strong {
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-  }
-`
 const ButtonsContainer = styled.section`
   margin-top: 15px;
   margin-bottom: 0;
@@ -100,22 +84,5 @@ const ButtonsContainer = styled.section`
     p {
       font-size: 18px;
     }
-  }
-`
-const Value = styled.div`
-  font-size: 16px;
-  text-align: right;
-  color: ${(props) => (props.color === "positivo" ? "green" : "red")};
-`
-const ListItemContainer = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  color: #000000;
-  margin-right: 10px;
-  div span {
-    color: #c6c6c6;
-    margin-right: 10px;
   }
 `
