@@ -39,14 +39,14 @@ export default function SignUpPage() {
     <SingUpContainer>
       <form onSubmit={handleSubmit}>
         <MyWalletLogo />
-        <input placeholder="Nome" type="text" name="name" value={formData.name} onChange={handleChange} />
-        <input placeholder="E-mail" type="email" name="email" value={formData.email} onChange={handleChange} />
-        <input placeholder="Senha" type="password" autocomplete="new-password" name="password" value={formData.password} onChange={handleChange} />
-        <input placeholder="Confirme a senha" type="password" autocomplete="new-password" value={confirmacaoSenha} onChange={e => setConfirmacaoSenha(e.target.value)} />
-        <button type="submit">Cadastrar</button>
+        <input data-test="name" placeholder="Nome" type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input data-test="email" placeholder="E-mail" type="email" name="email" value={formData.email} onChange={handleChange} />
+        <input data-test="password" placeholder="Senha" type="password" autocomplete="new-password" name="password" value={formData.password} onChange={handleChange} />
+        <input data-test="conf-password" placeholder="Confirme a senha" type="password" autocomplete="new-password" value={confirmacaoSenha} onChange={e => setConfirmacaoSenha(e.target.value)} />
+        <button data-test="sign-up-submit" type="submit">Cadastrar</button>
       </form>
 
-      <Link>
+      <Link to="/">
         Já tem uma conta? Entre agora!
       </Link>
     </SingUpContainer>
