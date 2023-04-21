@@ -2,8 +2,14 @@ import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
 import Transactions from "../components/Transactions"
+import { useContext } from "react"
+import AuthContext from "../contexts/AuthContext"
 
 export default function HomePage() {
+
+  const { authToken, setAuthToken } = useContext(AuthContext);
+  console.log(authToken)
+
   return (
     <HomeContainer>
       <Header>
