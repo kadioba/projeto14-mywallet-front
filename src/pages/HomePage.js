@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
 import Transactions from "../components/Transactions"
 import { useContext } from "react"
 import AuthContext from "../contexts/AuthContext"
+import { useNavigate } from "react-router-dom"
+import ButtonsAddTransaction from "../components/ButtonsAddTransaction"
 
 export default function HomePage() {
 
@@ -43,8 +44,9 @@ export default function HomePage() {
       </TransactionsContainer> */}
       <Transactions />
 
+      <ButtonsAddTransaction />
 
-      <ButtonsContainer>
+      {/*       <ButtonsContainer>
         <button>
           <AiOutlinePlusCircle />
           <p>Nova <br /> entrada</p>
@@ -53,7 +55,7 @@ export default function HomePage() {
           <AiOutlineMinusCircle />
           <p>Nova <br />saída</p>
         </button>
-      </ButtonsContainer>
+      </ButtonsContainer> */}
 
     </HomeContainer>
   )
@@ -72,23 +74,4 @@ const Header = styled.header`
   margin-bottom: 15px;
   font-size: 26px;
   color: white;
-`
-const ButtonsContainer = styled.section`
-  margin-top: 15px;
-  margin-bottom: 0;
-  display: flex;
-  gap: 15px;
-  
-  button {
-    width: 50%;
-    height: 115px;
-    font-size: 22px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    p {
-      font-size: 18px;
-    }
-  }
 `
