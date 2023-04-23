@@ -10,6 +10,11 @@ export default function Transactions() {
 
   const { authToken } = useContext(AuthContext);
   const [transacoes, setTransacoes] = useState([])
+  const [saldo, setSaldo] = useState(0)
+
+  function formatarNumero(numero) {
+    return numero.toFixed(2).replace('.', ',');
+  }
 
   useEffect(() => {
     const config = {
@@ -22,7 +27,14 @@ export default function Transactions() {
 
     requisicao.then(resposta => {
       setTransacoes(resposta.data);
-      console.log(resposta.data)
+      for (let i = 0; i < resposta.data.length; i++) {
+        if (resposta.data[i].type === "entrada") {
+          setSaldo(saldo + resposta.data[i].value)
+        }
+        else if (resposta.data[i].type === "saida") {
+          setSaldo(saldo - resposta.data[i].value)
+        }
+      }
     });
   }, []);
 
@@ -37,31 +49,16 @@ export default function Transactions() {
             type={transacao.type}
           />
         ))}
-
-        <ListItemContainer>
-          <div>
-            <span>30/11</span>
-            <strong>Almoço mãe</strong>
-          </div>
-          <Value color={"negativo"}>120,00</Value>
-        </ListItemContainer>
-
-        <ListItemContainer>
-          <div>
-            <span>15/11</span>
-            <strong>Salário</strong>
-          </div>
-          <Value color={"positivo"}>3000,00</Value>
-        </ListItemContainer>
       </ul>
 
       <article>
         <strong>Saldo</strong>
-        <Value color={"positivo"}>2880,00</Value>
+        <Value color={"positivo"}>{formatarNumero(saldo)}</Value>
       </article>
     </TransactionsContainer>
   )
 }
+
 
 const TransactionsContainer = styled.article`
   flex-grow: 1;
