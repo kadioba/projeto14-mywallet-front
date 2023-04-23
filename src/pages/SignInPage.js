@@ -10,7 +10,7 @@ import axios from "axios";
 export default function SignInPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const { authToken, setAuthToken } = useContext(AuthContext);
+  const { setUsername, setAuthToken } = useContext(AuthContext);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +23,8 @@ export default function SignInPage() {
 
     promisse.then((res) => {
       console.log(res)
-      setAuthToken(res.data)
+      setAuthToken(res.data.token)
+      setUsername(res.data.name)
       navigate("/home")
     })
     promisse.catch((error) => {

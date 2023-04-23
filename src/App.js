@@ -9,9 +9,10 @@ import { useState } from "react"
 
 export default function App() {
   const [authToken, setAuthToken] = useState("");
+  const [username, setUsername] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ authToken, setAuthToken }}>
+    <AuthContext.Provider value={{ authToken, setAuthToken, username, setUsername }}>
       <PagesContainer>
         <BrowserRouter>
           <Routes>
