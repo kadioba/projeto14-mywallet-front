@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import MyWalletLogo from "../components/MyWalletLogo"
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 
@@ -11,6 +11,17 @@ export default function SignInPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { setUsername, setAuthToken } = useContext(AuthContext);
+
+
+  useEffect(verificarSessao, []);
+
+  function verificarSessao() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthToken(token)
+      navigate("/home")
+    }
+  }
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,6 +37,7 @@ export default function SignInPage() {
       setAuthToken(res.data.token)
       setUsername(res.data.name)
       navigate("/home")
+      localStorage.setItem("token", `${res.data.token}`);
     })
     promisse.catch((error) => {
       alert(error.response.data)

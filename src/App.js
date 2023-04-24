@@ -8,7 +8,7 @@ import AuthContext from "./contexts/AuthContext"
 import { useState } from "react"
 
 export default function App() {
-  const [authToken, setAuthToken] = useState("");
+  const [authToken, setAuthToken] = useState(null);
   const [username, setUsername] = useState(null);
 
   return (

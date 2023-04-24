@@ -1,20 +1,51 @@
 import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
 import Transactions from "../components/Transactions"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import AuthContext from "../contexts/AuthContext"
 import ButtonsAddTransaction from "../components/ButtonsAddTransaction"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function HomePage() {
 
-  const { authToken, username } = useContext(AuthContext);
+  const { setAuthToken, authToken, username } = useContext(AuthContext);
+  const navigate = useNavigate()
   console.log(authToken)
+
+
+  useEffect(() => {
+    if (authToken === null) {
+      navigate("/")
+    }
+  }, []);
+
+  function logOut() {
+
+    const config = {
+      headers: {
+        "Authorization": `Bearer ${authToken}`
+      }
+    }
+
+    const promisse = axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, config);
+
+    promisse.then(() => {
+      localStorage.removeItem("token");
+      setAuthToken(null)
+      navigate("/")
+    })
+    promisse.catch((error) => {
+      alert(error.response.data)
+    })
+
+  }
 
   return (
     <HomeContainer>
       <Header>
         <h1>Olá, {username}</h1>
-        <BiExit />
+        <BiExit onClick={logOut} />
       </Header>
 
       <Transactions />
