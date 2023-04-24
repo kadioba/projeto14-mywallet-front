@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function HomePage() {
 
-  const { setAuthToken, authToken, username } = useContext(AuthContext);
+  const { setAuthToken, authToken, setUsername, username } = useContext(AuthContext);
   const navigate = useNavigate()
   console.log(authToken)
 
@@ -32,7 +32,9 @@ export default function HomePage() {
 
     promisse.then(() => {
       localStorage.removeItem("token");
+      localStorage.removeItem("name")
       setAuthToken(null)
+      setUsername(null)
       navigate("/")
     })
     promisse.catch((error) => {

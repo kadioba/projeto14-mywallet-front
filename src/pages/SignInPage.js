@@ -17,8 +17,10 @@ export default function SignInPage() {
 
   function verificarSessao() {
     const token = localStorage.getItem("token");
-    if (token) {
+    const name = localStorage.getItem("name");
+    if (token && name) {
       setAuthToken(token)
+      setUsername(name)
       navigate("/home")
     }
   }
@@ -38,6 +40,7 @@ export default function SignInPage() {
       setUsername(res.data.name)
       navigate("/home")
       localStorage.setItem("token", `${res.data.token}`);
+      localStorage.setItem("name", `${res.data.name}`);
     })
     promisse.catch((error) => {
       alert(error.response.data)
