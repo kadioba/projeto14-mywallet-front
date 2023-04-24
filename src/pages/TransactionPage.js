@@ -15,7 +15,7 @@ export default function TransactionsPage() {
     if (authToken === null) {
       navigate("/")
     }
-  }, []);
+  });
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
