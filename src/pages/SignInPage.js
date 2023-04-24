@@ -28,7 +28,7 @@ export default function SignInPage() {
       navigate("/home")
     })
     promisse.catch((error) => {
-      console.log(error)
+      alert(error.response.data)
     })
   }
 
