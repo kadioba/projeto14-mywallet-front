@@ -27,14 +27,16 @@ export default function Transactions() {
 
     requisicao.then(resposta => {
       setTransacoes(resposta.data.reverse());
+      let saldoAtual = 0
       for (let i = 0; i < resposta.data.length; i++) {
         if (resposta.data[i].type === "entrada") {
-          setSaldo(saldo + resposta.data[i].value)
+          saldoAtual + resposta.data[i].value
         }
         else if (resposta.data[i].type === "saida") {
-          setSaldo(saldo - resposta.data[i].value)
+          saldoAtual - resposta.data[i].value
         }
       }
+      setSaldo(saldoAtual)
     });
   }, []);
 
