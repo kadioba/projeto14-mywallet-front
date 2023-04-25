@@ -7,8 +7,6 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { ThreeDots } from 'react-loader-spinner'
 
-
-
 export default function SignInPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -47,8 +45,8 @@ export default function SignInPage() {
       setDisabled(false)
     })
     promisse.catch((error) => {
-      alert(error.response.data)
       setDisabled(false)
+      alert(error.response.data)
     })
   }
 

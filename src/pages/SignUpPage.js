@@ -4,10 +4,12 @@ import MyWalletLogo from "../components/MyWalletLogo"
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { ThreeDots } from 'react-loader-spinner'
 
 export default function SignUpPage() {
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("")
   const [formData, setFormData] = useState({ name: "", email: "", password: "" })
+  const [disabled, setDisabled] = useState(false)
   console.log(formData)
 
   const navigate = useNavigate()
@@ -25,14 +27,15 @@ export default function SignUpPage() {
     }
 
     const promisse = axios.post(`${process.env.REACT_APP_API_URL}/sign-up`, formData)
-
+    setDisabled(true)
     promisse.then(() => {
       navigate("/")
+      setDisabled(false)
     })
     promisse.catch((error) => {
       console.log(error)
+      setDisabled(false)
       alert(error.response.data)
-
     })
 
   }
@@ -45,7 +48,17 @@ export default function SignUpPage() {
         <input placeholder="E-mail" name="email" value={formData.email} onChange={handleChange} />
         <input placeholder="Senha" type="password" autocomplete="new-password" name="password" value={formData.password} onChange={handleChange} />
         <input placeholder="Confirme a senha" type="password" autocomplete="new-password" value={confirmacaoSenha} onChange={e => setConfirmacaoSenha(e.target.value)} required />
-        <button type="submit">Cadastrar</button>
+        <button type="submit" disabled={disabled}>{disabled ? <ThreeDots
+          text
+          height="30"
+          width="80"
+          radius="9"
+          color="white"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        /> : "Cadastrar"}</button>
       </form>
 
       <Link to="/">
@@ -61,4 +74,12 @@ const SingUpContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  a{
+    margin-top: 10px;
+  }
 `
