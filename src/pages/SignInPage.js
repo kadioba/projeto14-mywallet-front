@@ -13,7 +13,7 @@ export default function SignInPage() {
   const { setUsername, setAuthToken } = useContext(AuthContext);
 
 
-  useEffect(verificarSessao, []);
+  useEffect(verificarSessao);
 
   function verificarSessao() {
     const token = localStorage.getItem("token");

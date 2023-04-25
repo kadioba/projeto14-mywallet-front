@@ -18,7 +18,7 @@ export default function HomePage() {
     if (authToken === null) {
       navigate("/")
     }
-  }, []);
+  });
 
   function logOut() {
 
