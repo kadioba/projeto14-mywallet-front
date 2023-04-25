@@ -58,7 +58,7 @@ export default function SignInPage() {
         <input placeholder="Senha" type="password" name="password" autocomplete="new-password" onChange={handleChange} value={formData.password} required />
         <button type="submit" disabled={disabled} >{disabled ? <ThreeDots
           text
-          height="46"
+          height="30"
           width="80"
           radius="9"
           color="white"

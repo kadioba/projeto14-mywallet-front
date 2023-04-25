@@ -50,7 +50,7 @@ export default function SignUpPage() {
         <input placeholder="Confirme a senha" type="password" autocomplete="new-password" value={confirmacaoSenha} onChange={e => setConfirmacaoSenha(e.target.value)} required />
         <button type="submit" disabled={disabled}>{disabled ? <ThreeDots
           text
-          height="46"
+          height="30"
           width="80"
           radius="9"
           color="white"
