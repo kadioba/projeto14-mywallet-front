@@ -54,7 +54,7 @@ export default function TransactionsPage() {
         <input placeholder="Descrição" type="text" name="description" value={formData.description} onChange={handleChange} required />
         <button type="submit" disabled={disabled}>{disabled ? <ThreeDots
           text
-          height="30"
+          height="46"
           width="80"
           radius="9"
           color="white"
@@ -78,5 +78,10 @@ const TransactionsContainer = styled.main`
   h1 {
     align-self: flex-start;
     margin-bottom: 40px;
+  }
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `
