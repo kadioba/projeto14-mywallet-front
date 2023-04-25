@@ -23,6 +23,7 @@ export default function Transactions() {
       }
     }
 
+
     const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/transacoes`, config);
 
     requisicao.then(resposta => {
@@ -30,15 +31,15 @@ export default function Transactions() {
       let saldoAtual = 0
       for (let i = 0; i < resposta.data.length; i++) {
         if (resposta.data[i].type === "entrada") {
-          saldoAtual + resposta.data[i].value
+          saldoAtual = saldoAtual + resposta.data[i].value
         }
         else if (resposta.data[i].type === "saida") {
-          saldoAtual - resposta.data[i].value
+          saldoAtual = saldoAtual - resposta.data[i].value
         }
       }
       setSaldo(saldoAtual)
     });
-  }, []);
+  });
 
   return (
     <TransactionsContainer>
