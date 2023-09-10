@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# My Wallet - Gerenciador de finanças pessoais
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Descrição
 
-In the project directory, you can run:
+O MyWallet é uma aplicação de gerenciamento de finanças pessoais projetada para ajudar os usuários a acompanhar suas receitas e despesas. Ele fornece uma interface intuitiva para registrar transações financeiras e calcular o saldo do usuario. O projeto foi motivado pela necessidade de uma ferramenta de gerenciamento financeiro amigável e pelo desejo de criar uma aplicação prática.
 
-### `npm start`
+## Sobre
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O projeto consiste em uma SPA (Single Page Application) na qual os usuarios podem se cadastrar e já começar a marcar suas transações de entradas e saidas, com uma lista detalhando os dados das suas movimentações. Algumas das principais funcionalidades do MyWallet incluem:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Registro de usuário com nome, e-mail e senha
+- Funcionalidade de login
+- Listagem de transações de entrada e saída
+- Cadastro de entradas e saidas
+- Edição e exclusão de transações
+- Cálculo de saldo em tempo real
 
-### `npm test`
+### Próximos passos
+- Implementar visualização de dados para insights financeiros
+- Adicionar funcionalidades de orçamento e metas
+- Incluir exportação de dados e geração de relatórios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tecnologias
+- React: Utilizamos o framework React para desenvolver a interface do usuário, aproveitando sua flexibilidade e eficiência na criação de componentes reutilizáveis.
+- Styled Components: A estilização da aplicação foi feita com Styled Components, uma biblioteca que permite criar estilos CSS de forma mais organizada e dinâmica, mantendo o código limpo e fácil de manter.
+- Axios: Para realizar requisições HTTP à API do backend, utilizamos o Axios, uma biblioteca que simplifica a comunicação entre o frontend e o backend, tornando as operações de rede mais eficientes e confiáveis.
 
-### `npm run build`
+## Como Executar
+Siga estas etapas para baixar e configurar o projeto:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone o repositório MyWallet Backend para a sua máquina local.
+```bash
+git clone https://github.com/kadioba/projeto14-mywallet-front
+cd projeto14-mywallet-front
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navegue até o diretório do repositório do backend (https://github.com/kadioba/projeto14-mywallet-back/) e siga as instruções no README para executar o servidor backend. Uma outra opção é utilizar o backend que já está implantado como uma API REST em https://my-wallet-rrtg.onrender.com.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Crie um arquivo .env no diretório do projeto frontend e defina as seguintes variáveis de ambiente:
 
-### `npm run eject`
+```bash
+REACT_APP_API_URL=https://my-wallet-rrtg.onrender.com
+PORT=3000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Instale as dependências do projeto executando o seguinte comando no diretório do projeto frontend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Inicie o servidor de desenvolvimento do frontend:
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Agora você pode acessar a aplicação MyWallet frontend localmente em http://localhost:3000.
 
-## Learn More
+Certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Sinta-se à vontade para explorar a aplicação e gerenciar suas finanças pessoais de forma eficaz! Se encontrar algum problema ou tiver sugestões de melhorias, não hesite em reportá-los.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Aproveite o uso do MyWallet! 🚀
