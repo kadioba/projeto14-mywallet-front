@@ -19,10 +19,10 @@ O projeto consiste em uma SPA (Single Page Application) na qual os usuarios pode
 - Funcionalidade de login
 - Listagem de transações de entrada e saída
 - Cadastro de entradas e saidas
-- Edição e exclusão de transações
 - Cálculo de saldo em tempo real
 
 ### Próximos passos
+- Edição e exclusão de transações
 - Implementar visualização de dados para insights financeiros
 - Adicionar funcionalidades de orçamento e metas
 - Incluir exportação de dados e geração de relatórios
